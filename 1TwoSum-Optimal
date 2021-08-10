@@ -1,0 +1,18 @@
+#include<unordered_map>         //unordered map can be included or leet code compiler defaultly included
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {    
+         vector<int>result;   //this is dynamically allocated memory so that no need of creating size
+        unordered_map<int,int> map;//key and value pair inserted and retrived in O(1) in unordered map(basically unordered map implemented using hashing thats why it is O(1)) 
+        for(int i=0;i<nums.size();i++){   
+            if(map.find(target-nums[i])!=map.end()){    //we check target-nums[i] in the map or not
+                result.push_back(map[target-nums[i]]);  //if yes means push back the index of map[target-nums[i]] 
+                result.push_back(i);                    //if yes means push back that index number also
+                return result;                          //return result
+            }
+            map[nums[i]]=i;                             //if that number is not find means we included map key is (that element) and value is index
+        }
+        return result;                                   //this is only executed when we not found any result
+    }
+    
+};
